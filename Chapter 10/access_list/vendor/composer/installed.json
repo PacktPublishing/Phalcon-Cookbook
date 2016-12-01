@@ -1,0 +1,123 @@
+[
+    {
+        "name": "swiftmailer/swiftmailer",
+        "version": "v5.4.3",
+        "version_normalized": "5.4.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/swiftmailer/swiftmailer.git",
+            "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
+            "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9.1"
+        },
+        "time": "2016-07-08 11:51:25",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/swift_required.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Chris Corbyn"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Swiftmailer, free feature-rich PHP mailer",
+        "homepage": "http://swiftmailer.org",
+        "keywords": [
+            "email",
+            "mail",
+            "mailer"
+        ]
+    },
+    {
+        "name": "phalcon/incubator",
+        "version": "v3.0.0",
+        "version_normalized": "3.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phalcon/incubator.git",
+            "reference": "a72891bce0d5107f12ce8bc36c2e556fac2cb46a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phalcon/incubator/zipball/a72891bce0d5107f12ce8bc36c2e556fac2cb46a",
+            "reference": "a72891bce0d5107f12ce8bc36c2e556fac2cb46a",
+            "shasum": ""
+        },
+        "require": {
+            "ext-phalcon": "^3.0",
+            "php": ">=5.5",
+            "swiftmailer/swiftmailer": "~5.2"
+        },
+        "require-dev": {
+            "codeception/aerospike-module": "~0.1",
+            "codeception/codeception": "~2.2",
+            "codeception/mockery-module": "~0.2",
+            "codeception/specify": "~0.4",
+            "codeception/verify": "~0.3",
+            "phpdocumentor/reflection-docblock": "^2.0.4",
+            "phpunit/phpunit": "4.8.*",
+            "squizlabs/php_codesniffer": "~2.6"
+        },
+        "suggest": {
+            "duncan3dc/fork-helper": "To use extended class to access the beanstalk queue service",
+            "ext-aerospike": "*",
+            "sergeyklay/aerospike-php-stubs": "The most complete Aerospike PHP stubs which allows autocomplete in modern IDEs"
+        },
+        "time": "2016-07-29 21:38:28",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Phalcon\\": "Library/Phalcon/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Phalcon Team",
+                "email": "team@phalconphp.com",
+                "homepage": "http://phalconphp.com/en/team"
+            },
+            {
+                "name": "Contributors",
+                "homepage": "https://github.com/phalcon/incubator/graphs/contributors"
+            }
+        ],
+        "description": "Adapters, prototypes or functionality that can be potentially incorporated to the C-framework.",
+        "homepage": "http://phalconphp.com",
+        "keywords": [
+            "framework",
+            "incubator",
+            "phalcon"
+        ]
+    }
+]

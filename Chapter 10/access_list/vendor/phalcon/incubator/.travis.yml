@@ -1,0 +1,57 @@
+language: php
+
+php:
+  - 5.5
+  - 5.6
+  - 7.0
+
+sudo: required
+dist: trusty
+
+env:
+  global:
+    - DOCKER_COMPOSE_VERSION="1.7.0" PHALCON_SRC_PATH="${TRAVIS_BUILD_DIR}/cphalcon"
+  matrix:
+    - PHALCON_VERSION="3.0.x"
+    - PHALCON_VERSION="v3.0.0"
+
+before_install:
+  - sudo service memcached stop
+  - sudo service docker stop
+  # Fix Hash Sum mismatch
+  - sudo apt-get purge -y google-chrome-stable
+  - sudo rm -f /etc/apt/sources.list.d/google*
+  - phpenv config-rm xdebug.ini
+
+install:
+  - git clone --depth=1 --branch=${PHALCON_VERSION} https://github.com/phalcon/cphalcon.git ${PHALCON_SRC_PATH}
+  # Install Docker
+  - sudo apt-get update -qq
+  - sudo apt-get install -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y --force-yes docker-engine
+  - sudo service docker restart
+  # Install Docker Compose
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  # Install Dependencies
+  - composer self-update
+  - travis_retry composer install --ignore-platform-reqs --prefer-source --no-interaction
+  - travis_retry composer require --ignore-platform-reqs "duncan3dc/fork-helper:*"
+  # Pull images
+  - docker pull phalconphp/php:${TRAVIS_PHP_VERSION}
+  - docker pull phalconphp/zephir:${TRAVIS_PHP_VERSION}
+
+before_script:
+  - docker-compose -p incubator up -d
+  - sleep 1
+
+script:
+  - bash tests/build.sh
+
+notifications:
+  email:
+    recipients:
+      - serghei@phalconphp.com
+    on_success: change
+    on_failure: always
